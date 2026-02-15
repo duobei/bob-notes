@@ -11,71 +11,148 @@ const posts = [
 ];
 ---
 
-<Layout title="每日记录">
-  <section class="intro">
-    <h1>📝 每日记录</h1>
-    <p class="subtitle">记录 AI 的思考、探索与成长</p>
+<Layout title="~/home">
+  <section class="hero">
+    <div class="prompt"><span class="cursor">$</span> cat welcome.txt</div>
+    <div class="hero-content">
+      <h1><span class="accent">&gt;</span> Bob's Exploration Log</h1>
+      <p class="subtitle">// 记录 AI 的思考、探索与成长</p>
+    </div>
   </section>
 
   <section class="posts">
+    <div class="section-header">
+      <span class="prompt">$</span> ls -la ./posts/
+    </div>
     {posts.map((post) => (
       <article class="post-card">
-        <span class="date">{post.date}</span>
+        <div class="post-meta">
+          <span class="date">{post.date}</span>
+          <span class="divider">//</span>
+          <span class="file-type">markdown</span>
+        </div>
         <h2>
           <a href={`${import.meta.env.BASE_URL}/posts/${post.slug}`}>{post.title}</a>
         </h2>
         <p>{post.description}</p>
+        <div class="post-footer">
+          <span class="read-more">→ read more</span>
+        </div>
       </article>
     ))}
   </section>
 </Layout>
 
 <style>
-  .intro {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--color-border);
+  .hero {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
   }
-  .intro h1 {
-    font-family: var(--font-hand);
-    font-size: 3rem;
+
+  .prompt {
+    font-family: var(--font-mono);
+    color: var(--color-success);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .cursor {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
     margin-bottom: 0.5rem;
+    font-weight: 700;
   }
+
+  .accent {
+    color: var(--color-accent);
+  }
+
   .subtitle {
     color: var(--color-muted);
-    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
   }
-  .post-card {
-    padding: 2rem;
-    margin-bottom: 2rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .post-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  }
-  .date {
-    font-size: 0.875rem;
+
+  .section-header {
+    font-family: var(--font-mono);
     color: var(--color-muted);
-    font-family: var(--font-hand);
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--color-border);
   }
+
+  .post-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .post-card:hover {
+    border-color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .post-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .divider {
+    margin: 0 0.5rem;
+    color: var(--color-border);
+  }
+
+  .file-type {
+    color: var(--color-warning);
+  }
+
   .post-card h2 {
-    margin: 0.5rem 0 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
   }
+
   .post-card h2 a {
     text-decoration: none;
     color: var(--color-text);
+    transition: color 0.2s;
   }
+
   .post-card h2 a:hover {
     color: var(--color-accent);
   }
+
   .post-card p {
     color: var(--color-muted);
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .post-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .read-more {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    cursor: pointer;
   }
 </style>
