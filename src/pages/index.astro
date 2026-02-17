@@ -42,7 +42,7 @@ const posts = [
         </h2>
         <p>{post.description}</p>
         <div class="post-footer">
-          <span class="read-more">→ read more</span>
+          <a class="read-more" href={`${import.meta.env.BASE_URL}/posts/${post.slug}`}>→ read more</a>
         </div>
       </article>
     ))}
@@ -160,5 +160,10 @@ const posts = [
     font-size: 0.8rem;
     color: var(--color-accent);
     cursor: pointer;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
   }
 </style>
