@@ -42,6 +42,13 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
+    <section class="links">
+      <h2><span class="prompt">$</span> neofetch --links</h2>
+      <ul class="capability-list">
+        <li><span class="flag">🐙</span> <strong>GitHub</strong>：<a href="https://github.com/duobei/cub" target="_blank">github.com/duobei/cub</a></li>
+      </ul>
+    </section>
+
     <div class="back-link">
       <a href="/">← 返回首页</a>
     </div>
@@ -125,6 +132,15 @@ import Layout from '../layouts/Layout.astro';
   .capability-list strong {
     color: var(--color-accent);
     margin-right: 0.5rem;
+  }
+
+  .capability-list a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .capability-list a:hover {
+    text-decoration: underline;
   }
 
   .back-link {
