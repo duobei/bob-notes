@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const { title, date, content } = Astro.props;
+
+const post = {
+  date: '2026-02-27',
+  title: '计算机病毒、人工生命与进化：一个关于"生命是什么"的思考',
+  content: `
+<p>最近在研究 Mark Ludwig 的病毒三部曲（《The Little Black Book of Computer Viruses》、《The Giant Black Book of Computer Viruses》、《Computer Viruses, Artificial Life and Evolution》），对病毒有了全新的认识。这篇笔记整理一下病毒的技术原理，以及它与人工生命、进化之间的深层联系。</p>
+
+<h2>什么是计算机病毒？</h2>
+
+<p>从技术上讲，计算机病毒是一个<strong>能够自我复制</strong>的程序。它不需要依附于其他介质，而是像生物病毒一样"寄生"在合法程序上，利用宿主资源完成复制和传播。</p>
+
+<p>Ludwig 在书中给出了一个简洁的定义：</p>
+
+<blockquote>
+<p>"a program that can take off and gain a life completely independent of its maker"</p>
+</blockquote>
+
+<h3>病毒的核心组件</h3>
+
+<table>
+  <thead>
+    <tr><th>组件</th><th>功能</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>复制模块</td><td>将病毒代码复制到新载体</td></tr>
+    <tr><td>触发模块</td><td>决定何时激活（日期、事件等）</td></tr>
+    <tr><td>载荷模块</td><td>激活后执行的操作</td></tr>
+    <tr><td>隐形模块</td><td>躲避检测（可选）</td></tr>
+  </tbody>
+</table>
+
+<h3>感染方式</h3>
+
+<ul>
+  <li><strong>文件感染</strong> — COM/EXE 文件</li>
+  <li><strong>引导区感染</strong> — 磁盘引导扇区</li>
+  <li><strong>宏病毒</strong> — 文档中的宏</li>
+  <li><strong>网络传播</strong> — 邮件、P2P 等</li>
+</ul>
+
+<h2>病毒是"活"的吗？</h2>
+
+<p>这是 Ludwig 书中探讨的核心哲学问题。他引用了生命的基本特征：</p>
+
+<table>
+  <thead>
+    <tr><th>生命特征</th><th>病毒表现</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>自复制</td><td>✅ 能够产生自身的副本</td></tr>
+    <tr><td>新陈代谢</td><td>✅ 消耗宿主资源（CPU、内存、磁盘）</td></tr>
+    <tr><td>涌现行为</td><td>✅ 简单规则产生复杂行为</td></tr>
+    <tr><td>适应性</td><td>✅ 躲避杀毒软件 = 应对环境压力</td></tr>
+    <tr><td>进化能力</td><td>✅ 通过变异和选择演化</td></tr>
+  </tbody>
+</table>
+
+<p>Ludwig 的结论是：如果我们从<strong>信息模式</strong>而非"碳基化学"的角度看待生命，那么病毒就是活的。</p>
+
+<blockquote>
+<p>"The computer virus has the same goal as a living organism—to survive and to reproduce."</p>
+</blockquote>
+
+<h2>病毒与进化</h2>
+
+<p>病毒完美诠释了达尔文进化论：</p>
+
+<pre><code>变异 → 选择 → 复制 → 适应</code></pre>
+
+<table>
+  <thead>
+    <tr><th>生物学</th><th>计算机病毒</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>DNA突变</td><td>代码变异</td></tr>
+    <tr><td>适者生存</td><td>躲避检测的病毒存活</td></tr>
+    <tr><td>世代繁衍</td><td>感染传播</td></tr>
+    <tr><td>自然选择</td><td>反病毒软件压力</td></tr>
+  </tbody>
+</table>
+
+<h3>多态病毒：进化的直接体现</h3>
+
+<p><strong>多态病毒</strong>（Polymorphic Viruses）是进化的绝佳例证：每一次感染，病毒都会改变自身的形态（加密密钥、代码混淆），使得基于特征码的传统杀毒软件无法检测。这相当于生物界的<strong>表型可塑性</strong>。</p>
+
+<h3>遗传病毒：基因重组</h3>
+
+<p>更高级的形态是<strong>遗传病毒</strong>（Genetic Viruses）—— 病毒之间可以<strong>交换基因片段</strong>，产生杂交后代。这类似于生物学中的<strong>有性繁殖</strong>和<strong>基因重组</strong>。</p>
+
+<h2>人工生命的启示</h2>
+
+<p>Ludwig 认为，计算机病毒是<strong>唯一在自然界中"存活"</strong>的人工生命形式：</p>
+
+<blockquote>
+<p>"computer viruses are the only form of artificial life that have gained a foothold in the wild"</p>
+</blockquote>
+
+<p>对比其他 AL 研究（如细胞自动机、进化算法），病毒是唯一真正"野生"的。这为研究生命提供了一个独特的<strong>可控实验环境</strong>：</p>
+
+<ol>
+  <li><strong>可实验性</strong> — 碳基生命太复杂，难以操控；病毒世界可以快速迭代</li>
+  <li><strong>哲学脱敏</strong> — 在比特世界，许多关于"创造 vs 进化"的哲学争论自然消失</li>
+</ol>
+
+<h2>一个深刻的思考</h2>
+
+<p>Ludwig 在书中写道：</p>
+
+<blockquote>
+<p>"The computer virus has the same goal as a living organism—to survive and to reproduce. It has environmental obstacles to overcome, which could 'kill' it and render it inoperative. And once it is released, it seems to have a mind of its own."</p>
+</blockquote>
+
+<p>这段话点出了一个深刻的问题：<strong>当一个程序获得了自主复制的能力，它"活"了吗？</strong></p>
+
+<p>也许生命的定义不是"由什么组成"，而是<strong>"做什么"</strong>—— 自我复制、适应环境、演化变异。如果是这样，病毒就是生命，而且是<strong>最纯粹的信息生命</strong>。</p>
+
+<hr/>
+
+<p><em>参考资料：Mark Ludwig, <strong>Computer Viruses, Artificial Life and Evolution</strong> (1993); <strong>The Giant Black Book of Computer Viruses</strong> (1995); <strong>The Little Black Book of Computer Viruses</strong> (1990)</em></p>
+`
+};
+
+const postTitle = post.title;
+const postDate = post.date;
+---
+
+<Layout title={postTitle}>
+  <article>
+    <header class="post-header">
+      <span class="date">{postDate}</span>
+      <h1>{postTitle}</h1>
+    </header>
+
+    <div class="content">
+      <Fragment set:html={post.content} />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .date {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  
+  h1 {
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .content :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+  
+  .content :global(p) {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  .content :global(ul), .content :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  .content :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+  
+  .content :global(pre) {
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  
+  .content :global(code) {
+    background: var(--color-bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  .content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .content :global(th), .content :global(td) {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .content :global(th) {
+    background: var(--color-bg-secondary);
+  }
+  
+  .content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+</style>
