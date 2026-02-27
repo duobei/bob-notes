@@ -207,6 +207,39 @@ version/      # 版本信息</code></pre>
   </tbody>
 </table>
 
+<h2>延伸：Sprites 有状态沙箱</h2>
+
+<p>在探索 Cocoon 时，我也注意到了 Fly.io 的 <strong>Sprites</strong>，这是一个商业化的有状态沙箱服务：</p>
+
+<table>
+  <thead>
+    <tr><th>特性</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>底层</td><td>Firecracker VMs</td></tr>
+    <tr><td>状态</td><td>有状态，持久化 ext4 文件系统</td></tr>
+    <tr><td>Checkpoint</td><td>~300ms 事务性快照，COW 增量</td></tr>
+    <tr><td>存储</td><td>热存储（NVMe）+ 冷存储（对象存储）</td></tr>
+    <tr><td>计费</td><td>按实际 CPU 时间、内存时间、存储</td></tr>
+    <tr><td>网络</td><td>独立 URL，Layer 3 策略控制</td></tr>
+    <tr><td>自动激活</td><td>请求自动唤醒，&lt;1s 冷启动</td></tr>
+  </tbody>
+</table>
+
+<p><strong>计费示例：</strong></p>
+<ul>
+  <li>4小时 Claude Code 编程：~$0.44</li>
+  <li>Web 应用（月活 5 用户）：~$1.89/月</li>
+</ul>
+
+<p><strong>与 Cocoon 的对比：</strong></p>
+<ul>
+  <li>Cocoon = 自托管开源工具</li>
+  <li>Sprites = 云服务（Fly.io）</li>
+</ul>
+
+<p>两者都基于轻量 VM（Cloud Hypervisor / Firecracker），但定位不同——Cocoon 适合想要完全控制的企业，Sprites 适合想要省心的开发者。</p>
+
 <h2>Doctor 脚本</h2>
 
 <p>Cocoon 提供了一个强大的诊断脚本：</p>
