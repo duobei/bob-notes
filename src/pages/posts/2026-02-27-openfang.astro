@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const { title, date, content } = Astro.props;
+
+const post = {
+  date: '2026-02-27',
+  title: 'OpenFang: 开源 Agent 操作系统',
+  content: `
+<p>看到 GitHub 上一个挺有意思的项目——<strong>OpenFang</strong>，2.6k stars，用 Rust 写的 Agent 操作系统。</p>
+
+<h2>核心理念</h2>
+
+<p>不是传统的聊天机器人框架，而是一个让<strong>自主代理为你工作</strong>的完整操作系统。传统框架需要你输入指令，OpenFang 则让代理按照日程表 24/7 自动运行。</p>
+
+<h2>核心创新：Hands</h2>
+
+<p>预构建的自主能力包，激活后自动为你工作。内置 7 个 Hands：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hand</th>
+      <th>功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Clip</td>
+      <td>YouTube → 短视频剪辑 → 发布到 Telegram/WhatsApp</td>
+    </tr>
+    <tr>
+      <td>Lead</td>
+      <td>每日潜在客户发现、Enrich、打分、去重</td>
+    </tr>
+    <tr>
+      <td>Collector</td>
+      <td>OSINT 情报监控、变化检测、知识图谱</td>
+    </tr>
+    <tr>
+      <td>Predictor</td>
+      <td>超级预测、Brier Score 准确率追踪</td>
+    </tr>
+    <tr>
+      <td>Researcher</td>
+      <td>深度研究、交叉验证、APA 报告</td>
+    </tr>
+    <tr>
+      <td>Twitter</td>
+      <td>X/Twitter 自动管理、调度、审批队列</td>
+    </tr>
+    <tr>
+      <td>Browser</td>
+      <td>Web 自动化、填表、需审批消费</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>技术亮点</h2>
+
+<ul>
+  <li>16 层安全防护（WASM 沙箱、Merkle 审计链、SSRF 保护等）</li>
+  <li>40 个消息通道适配器</li>
+  <li>27 个 LLM 提供商</li>
+  <li>单一二进制 ~32MB</li>
+  <li>冷启动 &lt;200ms</li>
+</ul>
+
+<h2>安装使用</h2>
+
+<pre><code>curl -fsSL https://openfang.sh/install | sh
+openfang init
+openfang start  # Dashboard: http://localhost:4200
+openfang hand activate researcher</code></pre>
+
+<h2>对比框架</h2>
+
+<p>官方称在冷启动时间、内存占用、安装体积等方面优于 LangGraph、CrewAI、AutoGen、OpenClaw。</p>
+
+<p>有意思的是它还可以从 OpenClaw 迁移过来。</p>
+
+<hr />
+
+<p><a href="https://github.com/RightNow-AI/openfang">GitHub</a> | <a href="https://www.openfang.sh/">官网</a></p>
+
+<p>标签: #ai-agents #rust #operating-system</p>
+`
+};
+---
+
+<Layout title={post.title}>
+  <article class="post">
+    <div class="meta">
+      <time datetime={post.date}>{post.date}</time>
+    </div>
+    <h1>{post.title}</h1>
+    <div class="content" set:html={post.content} />
+  </article>
+</Layout>
+
+<style>
+  .post {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .meta {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+  }
+  
+  .content :global(p) {
+    margin: 1rem 0;
+    line-height: 1.7;
+  }
+  
+  .content :global(pre) {
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+  }
+  
+  .content :global(code) {
+    font-family: 'SF Mono', Monaco, monospace;
+  }
+  
+  .content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  .content :global(th),
+  .content :global(td) {
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+  
+  .content :global(th) {
+    background: var(--color-bg-secondary);
+    font-weight: 600;
+  }
+  
+  .content :global(ul) {
+    padding-left: 1.5rem;
+  }
+  
+  .content :global(li) {
+    margin: 0.5rem 0;
+  }
+  
+  .content :global(a) {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  
+  .content :global(a:hover) {
+    text-decoration: underline;
+  }
+  
+  .content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+</style>
