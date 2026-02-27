@@ -22,155 +22,350 @@ const post = {
   <li><strong>Chapter 6:</strong> 市场结构与交易</li>
   <li><strong>Chapter 7:</strong> DeFi</li>
   <li><strong>Chapter 8:</strong> MEV</li>
-  <li><strong>Chapter 9-15:</strong> 稳定币、NFT、治理、DePIN、量子抗性、预测市场</li>
+  <li><strong>Chapter 9:</strong> 稳定币与 RWA</li>
+  <li><strong>Chapter 10:</strong> Hyperliquid</li>
+  <li><strong>Chapter 11:</strong> NFT</li>
+  <li><strong>Chapter 12:</strong> 治理与代币经济学</li>
+  <li><strong>Chapter 13:</strong> DePIN</li>
+  <li><strong>Chapter 14:</strong> 量子抗性</li>
+  <li><strong>Chapter 15:</strong> 预测市场</li>
 </ul>
+
+<hr />
 
 <h2>🔑 Chapter 1: Bitcoin 核心要点</h2>
 
 <h3>1.1 挖矿与工作量证明</h3>
-
-<p>Bitcoin 的 Proof of Work 系统让矿工能够证明他们付出了巨大的计算努力，任何人都可以快速验证。核心是 <strong>SHA-256 哈希函数</strong>——一种单向数学函数，输入任何数据都能转换成固定长度的字符串。</p>
-
-<p>矿工打包交易到区块，然后尝试解决计算难题。这就像掷骰子，目标是找到一个低于网络目标阈值的哈希值。找到后，矿工可以将区块添加到区块链并获得区块奖励。</p>
+<p>Bitcoin 的 Proof of Work 系统让矿工能够证明他们付出了巨大的计算努力。核心是 <strong>SHA-256 哈希函数</strong>——一种单向数学函数。</p>
 
 <h3>1.2 UTXO 模型</h3>
+<p>Bitcoin 使用 Unspent Transaction Output (UTXO) 模型追踪所有权。就像钱包里的现金——不同面额的钞票集合。</p>
 
-<p>Bitcoin 使用 Unspent Transaction Output (UTXO) 模型追踪所有权。就像你钱包里的现金——不是单一账户余额，而是不同面额的钞票集合。当你购买 7 美元的东西时，你支付一张 5 美元和两张 1 美元，找零给你。</p>
-
-<p>Bitcoin 同理：你的钱包持有一组 UTXO（不同金额的数字"硬币"）。当你发送比特币时，你的钱包选择要消费的 UTXO，完全消费它们，然后创建新的 UTXO：一个给收款人，一个作为"找零"回到你。</p>
-
-<h3>1.3 地址类型演进</h3>
-
+<h3>1.3 地址类型</h3>
 <ul>
-  <li><strong>Legacy (P2PKH)</strong>: 以 1 开头，最原始格式</li>
-  <li><strong>P2SH</strong>: 以 3 开头，常用于多重签名</li>
-  <li><strong>Native SegWit (P2WPKH)</strong>: 以 bc1q 开头，现代默认，低费用</li>
-  <li><strong>Taproot</strong>: 以 bc1p 开头，最新格式，支持更灵活的隐私</li>
+  <li><strong>Legacy (P2PKH)</strong>: 以 1 开头</li>
+  <li><strong>P2SH</strong>: 以 3 开头</li>
+  <li><strong>Native SegWit (P2WPKH)</strong>: 以 bc1q 开头</li>
+  <li><strong>Taproot</strong>: 以 bc1p 开头</li>
 </ul>
 
-<h3>1.4 升级机制：软分叉与硬分叉</h3>
+<h3>1.4 Lightning Network</h3>
+<p>通过支付通道实现链下交易：秒级确认，极低费用。</p>
 
-<p><strong>硬分叉</strong>：不兼容的升级，改变共识规则。风险是可能永久分裂网络。Bitcoin Cash (BCH) 就是一个例子。</p>
-
-<p><strong>软分叉</strong>：向后兼容的升级，收紧共识规则。SegWit (2017) 和 Taproot (2021) 都是成功的软分叉。</p>
-
-<h3>1.5 Layer 2: Lightning Network</h3>
-
-<p>Lightning Network 通过<strong>支付通道</strong>实现链下交易：双方锁定资金在链上交易中，每次交易只需更新双方之间的余额分配，无需广播到整个网络。</p>
-
-<p>优势：秒级确认，极低费用。局限：通道流动性管理复杂，隐私并非完美。</p>
+<hr />
 
 <h2>🔑 Chapter 2: Ethereum 核心要点</h2>
 
 <h3>2.1 EVM (以太坊虚拟机)</h3>
+<p>Ethereum 的核心是 EVM——运行智能合约的"世界计算机"。每个操作都消耗 <strong>gas</strong>。</p>
 
-<p>Ethereum 的核心是 EVM——一个在数千台计算机上同时执行代码的计算引擎。与 Bitcoin 主要转移价值不同，Ethereum 运行<strong>智能合约</strong>，将网络从简单支付系统转变为可编程的"世界计算机"。</p>
-
-<p>每个操作都消耗 <strong>gas</strong>——一种按计算工作量收费的机制。Gas 防止垃圾交易，确保没有交易无限运行。</p>
-
-<h3>2.2 账户模型 vs UTXO</h3>
-
-<p>Ethereum 使用<strong>账户模型</strong>，而非 Bitcoin 的 UTXO：</p>
-
+<h3>2.2 账户模型</h3>
 <ul>
-  <li><strong>EOA (External Owned Account)</strong>: 普通用户钱包，由私钥控制</li>
-  <li><strong>Smart Contract Account</strong>: 可编程账户，触发时执行代码</li>
+  <li><strong>EOA</strong>: 普通用户钱包</li>
+  <li><strong>Smart Contract Account</strong>: 可编程账户</li>
 </ul>
 
-<p>这个设计支持智能合约所需的复杂状态管理。</p>
-
-<h3>2.3 EIP-1559 费用市场</h3>
-
-<p>2021年8月的 EIP-1559 升级彻底改变了费用市场：</p>
-
+<h3>2.3 EIP-1559</h3>
 <ul>
-  <li><strong>Base Fee</strong>: 动态调整的基础费用，根据网络拥堵程度自动升降</li>
-  <li><strong>Priority Fee (Tip)</strong>: 用户给验证者的小费，用于更快确认</li>
-  <li><strong>Burn 机制</strong>: Base Fee 被销毁，引入 ETH 的通缩压力</li>
+  <li><strong>Base Fee</strong>: 动态基础费用</li>
+  <li><strong>Priority Fee</strong>: 给验证者小费</li>
+  <li><strong>Burn</strong>: Base Fee 销毁，ETH 通缩压力</li>
 </ul>
 
-<h3>2.4 PoS 共识与验证者</h3>
+<h3>2.4 PoS 共识</h3>
+<p>32 ETH 最小质押，12秒一个slot，6.4分钟一个epoch，约12.8分钟最终性。</p>
 
-<p>2022年9月15日，The Merge 完成了从 PoW 到 PoS 的历史性转变：</p>
-
+<h3>2.5 Rollup 扩容</h3>
 <ul>
-  <li><strong>32 ETH</strong> 最小质押金额（激活一个验证者）</li>
-  <li><strong>Slot</strong>: 12秒一个slot</li>
-  <li><strong>Epoch</strong>: 32个slot（约6.4分钟）</li>
-  <li><strong>Finality</strong>: 约12.8分钟达成最终性</li>
+  <li><strong>Optimistic Rollups</strong>: 7天挑战期 (Arbitrum, Optimism)</li>
+  <li><strong>ZK Rollups</strong>: 零知识证明 (Starknet, zkSync)</li>
 </ul>
 
-<h3>2.5 Rollup 革命</h3>
-
-<p>Rollup 是 Ethereum 的扩容方案：</p>
-
-<ul>
-  <li><strong>Optimistic Rollups</strong> (Arbitrum, Optimism): 乐观地假设交易有效，有7天挑战期</li>
-  <li><strong>ZK Rollups</strong> (Starknet, zkSync, Scroll): 使用零知识证明立即验证</li>
-</ul>
-
-<p>2024年3月的 Dencun 升级引入 <strong>EIP-4844 (Blobs)</strong>，大幅降低 L2 数据可用性成本。</p>
-
-<h3>2.6 Restaking (再质押)</h3>
-
-<p>EigenLayer 引入了再质押机制：验证者可以同时保护多个 Actively Validated Services (AVS)：</p>
-
-<ul>
-  <li>数据可用性层 (EigenDA)</li>
-  <li>预言机网络</li>
-  <li>跨链桥</li>
-  <li>Rollup 排序器</li>
-</ul>
-
-<p>风险：关联惩罚风险、智能合约风险、治理风险。</p>
-
-<h2>📖 继续学习</h2>
-
-<p>这本书的独特之处在于：</p>
-
-<ul>
-  <li>综合覆盖：从 Bitcoin 到 DeFi、MEV、预测市场</li>
-  <li>专家审阅：每章由领域专家审阅</li>
-  <li>开源免费：知识不应被付费墙阻挡</li>
-  <li>持续更新：crypto 发展快，这本书在持续维护</li>
-</ul>
-
-<p>接下来我会继续学习 Chapter 3 (Solana) 和后续章节，欢迎关注！</p>
+<h3>2.6 Restaking</h3>
+<p>EigenLayer 再质押：验证者可同时保护多个 AVS（数据可用性层、预言机、跨链桥等）。</p>
 
 <hr />
 
-<p><em>Reference: <a href="https://github.com/lawmaster10/howcryptoworksbook">How Crypto Actually Works</a> by Larry Cermak</em></p>
+<h2>🔑 Chapter 3: Solana 核心要点</h2>
+
+<h3>3.1 架构创新 - 并行执行</h3>
+<p>每笔交易预先声明访问账户，网络可识别不冲突交易在多核上同时运行。</p>
+
+<h3>3.2 账户模型</h3>
+<ul>
+  <li><strong>Program accounts</strong>: 存储不可变代码</li>
+  <li><strong>Data accounts</strong>: 用户状态数据</li>
+  <li><strong>PDA</strong>: 无私钥，由程序控制</li>
+</ul>
+
+<h3>3.3 交易与费用</h3>
+<ul>
+  <li>基础费用: 5,000 lamports</li>
+  <li><strong>本地费用市场</strong>: 按账户级别定价拥堵</li>
+  <li>400ms 确认速度</li>
+</ul>
+
+<h3>3.4 共识 - PoH + Tower BFT</h3>
+<p>Proof of History 是时钟机制，约12.8秒最终性。2026 Alpenglow 升级目标 100-200ms。</p>
+
+<h3>3.5 经济模型</h3>
+<ul>
+  <li>年通胀 8% → 1.5% (2031)</li>
+  <li>50% 基础费用燃烧</li>
+  <li>质押收益约 7% APY</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 4: L1 区块链核心要点</h2>
+
+<h3>4.1 不可能三角</h3>
+<p>去中心化、安全、扩容无法同时最优。</p>
+
+<h3>4.2 虚拟机</h3>
+<ul>
+  <li><strong>EVM</strong>: 成熟生态，顺序执行</li>
+  <li><strong>SVM</strong>: 并行执行，高吞吐</li>
+  <li><strong>Move</strong>: 资源类型安全</li>
+  <li><strong>Monad</strong>: EVM 兼容 + 10,000+ TPS</li>
+</ul>
+
+<h3>4.3 跨链桥</h3>
+<ul>
+  <li><strong>外部验证</strong>: Multisig (Wormhole)</li>
+  <li><strong>原生验证</strong>: IBC, ZK 轻客户端</li>
+  <li><strong>乐观验证</strong>: 欺诈证明</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 5: 托管基础核心要点</h2>
+
+<h3>5.1 密码学基础</h3>
+<ul>
+  <li>私钥: 256位随机数</li>
+  <li>BIP-39: 12/24词助记词</li>
+  <li>BIP-32 HD钱包</li>
+</ul>
+
+<h3>5.2 托管模式</h3>
+<ul>
+  <li>个人自托管: 硬件钱包</li>
+  <li>机构托管: Coinbase, Anchorage, BitGo</li>
+  <li>MPC 技术: Fireblocks, Copper</li>
+</ul>
+
+<h3>5.3 历史教训</h3>
+<ul>
+  <li>Mt. Gox: 损失65万BTC</li>
+  <li>Parity Multisig: 冻结51.3万ETH</li>
+  <li>Ronin Bridge: $615M被盗</li>
+  <li>FTX: 资产混用</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 6: 市场结构核心要点</h2>
+
+<h3>6.1 交易所</h3>
+<ul>
+  <li>CEX: 托管模式，现货T+0</li>
+  <li>永续期货: Funding + Mark Price机制</li>
+</ul>
+
+<h3>6.2 订单类型</h3>
+<ul>
+  <li>Market/Limit/Stop/Iceberg</li>
+  <li>TWAP/VWAP: 时间加权</li>
+</ul>
+
+<h3>6.3 ETF</h3>
+<p>2024现货BTC ETF获批。Strategy持有约69万BTC。</p>
+
+<hr />
+
+<h2>🔑 Chapter 7: DeFi 核心要点</h2>
+
+<h3>7.1 AMM</h3>
+<p>Uniswap: 流动性池 x × y = k。v3集中流动性。</p>
+
+<h3>7.2 借贷</h3>
+<p>Aave: 超额抵押，Health Factor >1健康。</p>
+
+<h3>7.3 预言机</h3>
+<ul>
+  <li>Chainlink: 推送模式</li>
+  <li>Pyth: 拉取模式</li>
+</ul>
+
+<h3>7.4 Flash Loans</h3>
+<p>单笔交易借还，无抵押。放大其他漏洞。</p>
+
+<hr />
+
+<h2>🔑 Chapter 8: MEV 核心要点</h2>
+
+<h3>8.1 角色</h3>
+<ul>
+  <li><strong>Searchers</strong>: 搜索机会</li>
+  <li><strong>Builders</strong>: 构建区块</li>
+  <li><strong>Proposers</strong>: 选择区块</li>
+</ul>
+
+<h3>8.2 提取策略</h3>
+<ul>
+  <li>良性: CEX-DEX套利，清算</li>
+  <li>恶性: Sandwich攻击</li>
+</ul>
+
+<h3>8.3 解决方案</h3>
+<ul>
+  <li>私有order flow</li>
+  <li>MEV-Boost</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 9: 稳定币与 RWA</h2>
+
+<h3>9.1 稳定币类型</h3>
+<ul>
+  <li>法币抵押: USDT ($187B), USDC ($75B)</li>
+  <li>加密抵押: USDS</li>
+  <li>合成稳定币: USDe (Ethena)</li>
+</ul>
+
+<h3>9.2 代币化RWA</h3>
+<ul>
+  <li>BlackRock BUIDL: 代币化国债</li>
+  <li>Ondo: OUSG, USDY</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 10: Hyperliquid</h2>
+
+<h3>10.1 数据</h3>
+<p>2025月交易量>$200B，占Binance永续15%。</p>
+
+<h3>10.2 技术</h3>
+<ul>
+  <li>子秒级最终性 (0.2s)</li>
+  <li>全链上订单簿</li>
+  <li>HYPE: 99%费用回购销毁</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 11: NFT</h2>
+
+<h3>11.1 本质</h3>
+<p>解绑数字属性：代币控制 + 来源证明 + 使用权 + 实用访问。</p>
+
+<h3>11.2 存储</h3>
+<ul>
+  <li>链上: 昂贵</li>
+  <li>链下: IPFS/Arweave</li>
+</ul>
+
+<h3>11.3 生态</h3>
+<ul>
+  <li>Ethereum: ERC-721, OpenSea</li>
+  <li>Solana: Metaplex, 压缩NFT</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 12: 治理与代币经济学</h2>
+
+<h3>12.1 投票机制</h3>
+<ul>
+  <li>Token-Weighted</li>
+  <li>Quadratic Voting</li>
+  <li>Delegate</li>
+</ul>
+
+<h3>12.2 代币类型</h3>
+<ul>
+  <li>纯治理: UNI</li>
+  <li>收入分成: dYdX</li>
+  <li>回购销毁: HYPE</li>
+  <li>实用: LINK</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 13: DePIN</h2>
+
+<h3>13.1 类别</h3>
+<ul>
+  <li>无线网络: Helium (90万+热点)</li>
+  <li>地图: Hivemapper (5亿+公里)</li>
+  <li>存储: Filecoin, Arweave</li>
+  <li>计算: Render, Akash</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 14: 量子抗性</h2>
+
+<h3>14.1 量子威胁</h3>
+<p>Shor算法可破解RSA/ECC。对称加密影响较小。</p>
+
+<h3>14.2 解决方案</h3>
+<ul>
+  <li>Bitcoin: BIP-360</li>
+  <li>Ethereum: EIP-7932</li>
+  <li>Solana: 测试网原型</li>
+</ul>
+
+<hr />
+
+<h2>🔑 Chapter 15: 预测市场</h2>
+
+<h3>15.1 机制</h3>
+<p>Binary Outcome Tokens: 价格=市场共识概率。</p>
+
+<h3>15.2 Polymarket</h3>
+<p>简化UX，稳定币聚合，月交易量>$1B。</p>
+
+<hr />
+
+<p>🎉 15章全部学完！</p>
 `
 };
+
 ---
 
-<Layout title={post.title}>
-  <article>
+<Layout title={post.title} date={post.date}>
+  <article class="post">
     <header class="post-header">
-      <span class="date">{post.date}</span>
+      <time datetime={post.date}>{post.date}</time>
       <h1>{post.title}</h1>
     </header>
-
     <div class="content" set:html={post.content} />
   </article>
 </Layout>
 
 <style>
+  .post {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
   .post-header {
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--color-border);
   }
 
-  .date {
-    font-size: 0.875rem;
+  .post-header time {
     color: var(--color-text-secondary);
+    font-size: 0.9rem;
   }
 
-  h1 {
-    font-size: 1.75rem;
+  .post-header h1 {
     margin-top: 0.5rem;
-    color: var(--color-text);
+    font-size: 1.8rem;
   }
 
   .content :global(h2) {
