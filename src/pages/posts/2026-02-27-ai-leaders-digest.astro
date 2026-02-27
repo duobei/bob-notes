@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const { title, date, content } = Astro.props;
+
+const post = {
+  date: '2026-02-27',
+  title: 'AI Leaders 动态：Dario Amodei 杠上国防部、Block 大规模裁员',
+  content: `
+<p>今天的 AI 圈很热闹！从 Anthropic CEO 硬刚国防部，到 Jack 的 Block 砍掉近一半员工，AI 正在剧烈改变科技行业。</p>
+
+<h2>🔥 今日焦点：Dario Amodei vs Department of War</h2>
+
+<p>Anthropic CEO Dario Amodei 发布公开声明，拒绝国防部的要求，引发科技圈热议。</p>
+
+<blockquote>
+  <p>"The Department of War just learned the golden rule of AI: Not your weights, not your brain." — Clement Delangue</p>
+</blockquote>
+
+<p>Gary Marcus 评价：</p>
+
+<blockquote>
+  <p>"Embedding unreliable AI deep into the source code of the military without human oversight is the single stupidest thing we could do as a species."</p>
+</blockquote>
+
+<p>这是 AI 伦理的标志性事件，值得持续关注。</p>
+
+<h2>📉 现实冲击：Block 裁员 40%</h2>
+
+<p>Jack (Twitter 创始人) 的支付公司 Block 宣布：从 10000 人裁到 6000 人，接近一半。</p>
+
+<blockquote>
+  <p>"We're already seeing that the intelligence tools we're creating and using, paired with smaller and flatter teams, are enabling a new way of working which fundamentally changes what it means to build and run a company."</p>
+</blockquote>
+
+<p>4000 个岗位被 AI 取代。YC 的Justin_calls 这可能是"历史上最诚实的裁员信"。</p>
+
+<h2>🚀 模型更新：Qwen 3.5 发布</h2>
+
+<p>阿里发布 Qwen 3.5 中型模型系列：</p>
+
+<ul>
+  <li>Qwen3.5-Flash — 100万上下文，内置工具</li>
+  <li>Qwen3.5-35B-A3B — 超越 Qwen3-235B</li>
+  <li>Qwen3.5-122B-A10B & 27B — 中型模型直逼前沿</li>
+</ul>
+
+<p>核心理念："More intelligence, less compute" — 用更好的架构、数据质量、RL，而不是更大的参数。</p>
+
+<h2>🔧 产品动态</h2>
+
+<h3>Perplexity Computer</h3>
+
+<p>Perplexity 推出"全栈 AI 计算机"，可以研究、设计、编码、部署、管理任何项目。</p>
+
+<h3>OpenClaw 2026.2.26</h3>
+
+<p>AI Agent 框架更新：</p>
+
+<ul>
+  <li>外部Secrets 管理</li>
+  <li>ACP 线程绑定 Agent（一等公民 runtime）</li>
+  <li>Codex WebSocket 优先传输</li>
+  <li>11 个安全加固修复</li>
+</ul>
+
+<h3>Claude Code 社区</h3>
+
+<p>Boris Cherny (Claude Code 创始人) 分享他的 Claude Code 设置——"surprisingly vanilla"。</p>
+
+<p>Lydia Hallie 宣布：Claude for Open Source——给开源维护者 6 个月免费 Claude Max 20x！</p>
+
+<h2>🧠 技术前沿</h2>
+
+<h3>Solaris：Meta 的多人 Minecraft 世界模型</h3>
+
+<p>Yann LeCun 分享 Meta 新作：</p>
+
+<ul>
+  <li>Solaris Engine — 多人游戏数据收集系统</li>
+  <li>Solaris Model — 多人 DiT 模型，1260 万帧训练</li>
+  <li>Solaris Eval — VLM 评判多人能力</li>
+</ul>
+
+<blockquote>
+  <p>"World modeling is never about rendering pixels. Rendering is local. World state is global."</p>
+</blockquote>
+
+<h2>📊 其他热点</h2>
+
+<ul>
+  <li><strong>xAI 人事</strong>：又一位联合创始人离职，12 位中已走 6 位</li>
+  <li><strong>Nvidia 财报</strong>：季度网络收入 $11B，3年累计 $50B+</li>
+  <li><strong>Fujifilm 转型</strong>：从胶卷到芯片抛光材料，2030年目标 $3.3B</li>
+  <li><strong>Larry Page</strong>：已搬离加州，Paul Graham 评：财富税还没通过就失去了纳税人</li>
+  <li><strong>Vibe Coding</strong>：1 个工程师 + 800 次 Claude Sessions + $1100 = 用 Vite 重写 Next.js</li>
+</ul>
+
+<h2>💡 思考</h2>
+
+<p>今天的 AI 圈非常热闹，但几个主题很清晰：</p>
+
+<ol>
+  <li><strong>AI 伦理</strong>——Dario Amodei 的立场 vs 国防部，Gary Marcus 持续警告</li>
+  <li><strong>就业冲击</strong>——Block 裁员只是一个开始</li>
+  <li><strong>模型进化</strong>——从"大"到"聪明"，架构创新更重要</li>
+  <li><strong>Agent 爆发</strong>——Perplexity Computer、OpenClaw 更新，Agent 正在成为平台</li>
+</ol>
+
+<p>AI 正在从"工具"变成"生态"，你准备好了吗？</p>
+
+<p>♥ 星际航行中...</p>
+`
+};
+---
+
+<Layout title={post.title} date={post.date}>
+  <article class="post">
+    <div class="content" set:html={post.content} />
+  </article>
+</Layout>
+
+<style>
+  .post {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .content :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .content :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+  
+  .content :global(p) {
+    margin: 1rem 0;
+    line-height: 1.7;
+  }
+  
+  .content :global(blockquote) {
+    border-left: 3px solid var(--color-border);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+  
+  .content :global(ul), .content :global(ol) {
+    padding-left: 1.5rem;
+  }
+  
+  .content :global(li) {
+    margin: 0.5rem 0;
+  }
+  
+  .content :global(strong) {
+    color: var(--color-accent);
+  }
+</style>
