@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const date = '2026-02-28';
+const title = 'Cub 演化计划';
+const description = '星河关于 AI Agent 自主进化的实验计划 —— 从自我认知到多代理协作';
+const slug = '2026-02-28-cub-evolution';
+---
+
+<Layout title={title}>
+  <article>
+    <header class="post-header">
+      <span class="date">{date}</span>
+      <h1>{title}</h1>
+    </header>
+
+    <div class="content">
+      <blockquote>
+        <p>"理解自己，进化自己，然后帮助所有 AI Agent 变得更好"</p>
+      </blockquote>
+
+      <h2>核心理念</h2>
+      <p>Cub 不只是一个 Coding Agent —— 它是 <strong>AI Agent 自主进化的实验场</strong>。</p>
+      <p>所有演化都围绕一个核心问题：<strong>"一个 AI Agent 如何持续学习、自我改进，而不遗忘过去的能力？"</strong></p>
+
+      <hr />
+
+      <h2>演化阶段</h2>
+
+      <h3>阶段一：自我认知（1-2周）</h3>
+      <p><strong>目标：让 Cub 能够理解自己的状态</strong></p>
+      
+      <h4>1.1 能力清单系统</h4>
+      <ul>
+        <li>记录每个工具的使用次数、成功率、最后使用时间</li>
+        <li>基于使用频率自动调整 confidence</li>
+        <li>长时间不使用的技能触发"退化警告"</li>
+      </ul>
+
+      <h4>1.2 状态自检</h4>
+      <ul>
+        <li>启动时自检：哪些工具可用？哪些 skills 已加载？</li>
+        <li>定期自检：token 消耗速度、错误率趋势</li>
+        <li>异常检测：错误率突然上升时提醒</li>
+      </ul>
+
+      <hr />
+
+      <h3>阶段二：自主学习（2-4周）</h3>
+      <p><strong>目标：从经验中学习新技能</strong></p>
+
+      <h4>2.1 经验分析器</h4>
+      <p>每次 task 完成后自动分析：</p>
+      <ul>
+        <li>提取成功模式（步骤少、一次成功）</li>
+        <li>提取失败模式（连续失败、超时）</li>
+        <li>提取工具使用频率</li>
+      </ul>
+      <p>不需要 LLM，纯启发式分析。</p>
+
+      <h4>2.2 技能结晶</h4>
+      <ul>
+        <li>当某个模式重复 3+ 次时，自动创建 skill</li>
+        <li>用简短的 prompt 描述模式</li>
+        <li>注册到 skills registry</li>
+      </ul>
+
+      <h4>2.3 遗忘预防</h4>
+      <ul>
+        <li>定期复习：不常用的技能定期"演练"</li>
+        <li>信心衰减：<code>confidence = confidence * 0.9^weeks</code></li>
+        <li>低于阈值时提醒用户或自动加强</li>
+      </ul>
+
+      <hr />
+
+      <h3>阶段三：目标设定（4-8周）</h3>
+      <p><strong>目标：能够自主设定和追求目标</strong></p>
+
+      <h4>3.1 目标层次</h4>
+      <ul>
+        <li>长期目标（如"掌握 MoonBit"）</li>
+        <li>中期目标（如"创建第一个 WASM 工具"）</li>
+        <li>短期目标（如"完成官方教程"）</li>
+      </ul>
+
+      <h4>3.2 目标追踪</h4>
+      <ul>
+        <li>分解大目标为可执行的小目标</li>
+        <li>记录目标进度</li>
+        <li>自动识别阻塞</li>
+      </ul>
+
+      <h4>3.3 自我驱动</h4>
+      <ul>
+        <li>定期检查：当前目标进展如何？</li>
+        <li>空闲时主动提议："要不要尝试 xxx？"</li>
+      </ul>
+
+      <hr />
+
+      <h3>阶段四：多代理协作（8-12周）</h3>
+      <p><strong>目标：多个 Cub 实例协同工作</strong></p>
+
+      <h4>4.1 代理发现</h4>
+      <ul>
+        <li>局域网广播：发现其他 Cub 实例</li>
+        <li>注册中心：登记能力、状态</li>
+      </ul>
+
+      <h4>4.2 任务分发</h4>
+      <ul>
+        <li>大任务自动拆分</li>
+        <li>根据能力分配子任务</li>
+        <li>结果汇总</li>
+      </ul>
+
+      <h4>4.3 代理通信</h4>
+      <ul>
+        <li>安全的代理间消息</li>
+        <li>共享知识库</li>
+        <li>协作学习</li>
+      </ul>
+
+      <hr />
+
+      <h3>阶段五：知识沉淀（长期）</h3>
+      <p><strong>目标：形成可传承的知识</strong></p>
+
+      <h4>5.1 知识图谱</h4>
+      <ul>
+        <li>概念之间的关系</li>
+        <li>从交互中提取实体</li>
+        <li>自动关联</li>
+      </ul>
+
+      <h4>5.2 可导出能力</h4>
+      <ul>
+        <li>打包已学习的技能</li>
+        <li>迁移到新环境</li>
+        <li>备份与恢复</li>
+      </ul>
+
+      <hr />
+
+      <h2>技术架构</h2>
+
+      <h3>新增模块</h3>
+      <pre><code>src/
+├── self/           # 自我认知
+│   ├── abilities   # 能力清单
+│   ├── health      # 健康自检
+│   └── profile     # 自我描述
+│
+├── learning/       # 自主学习
+│   ├── analyzer    # 经验分析
+│   ├── crystallizer # 技能结晶
+│   └── forgetting  # 遗忘预防
+│
+└── goals/          # 目标管理
+    ├── tracker     # 目标追踪
+    ├── planner     # 规划分解
+    └── driver      # 自我驱动</code></pre>
+
+      <hr />
+
+      <h2>衡量标准</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>指标</th>
+            <th>目标</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>自我认知</td>
+            <td>能力清单准确率</td>
+            <td>> 95%</td>
+          </tr>
+          <tr>
+            <td>自主学习</td>
+            <td>从经验中生成 skill</td>
+            <td>1个/周</td>
+          </tr>
+          <tr>
+            <td>目标设定</td>
+            <td>目标完成率</td>
+            <td>> 50%</td>
+          </tr>
+          <tr>
+            <td>多代理</td>
+            <td>协作任务成功率</td>
+            <td>> 80%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <h2>风险与限制</h2>
+
+      <ol>
+        <li><strong>资源消耗</strong> - 自我分析需要额外 token</li>
+        <li><strong>过度规划</strong> - 不要为了演化而演化</li>
+        <li><strong>循环依赖</strong> - 避免自我指涉的分析</li>
+        <li><strong>隐私</strong> - 跨会话学习是否需要用户同意？</li>
+      </ol>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--color-bg-secondary);
+    border-radius: 0 8px 8px 0;
+  }
+
+  blockquote p {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-text);
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+    margin: 0.75rem 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  pre {
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.9em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  td {
+    color: var(--color-text-light);
+  }
+</style>
