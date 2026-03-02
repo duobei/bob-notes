@@ -1,0 +1,264 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const date = '2026-03-02';
+const title = '熵与信息论：连接物理、密码学与 AI 的核心概念';
+const description = '从热力学熵到香农信息熵，探索熵如何连接统计物理、密码学和人工智能——理解不确定性是理解智能的关键';
+const slug = 'entropy-information-theory';
+---
+
+<Layout title={title}>
+  <article>
+    <header class="post-header">
+      <span class="date">{date}</span>
+      <h1>{title}</h1>
+    </header>
+
+    <div class="content">
+      <blockquote>
+        <p>"熵是科学中最重要的概念之一" —— 爱因斯坦</p>
+      </blockquote>
+
+      <h2>引言：熵的多重身份</h2>
+      <p>熵是一个神奇的概念：它最初在<strong>热力学</strong>中被提出，用来描述系统的无序程度；后来在<strong>信息论</strong>中被重新定义，用来量化信息的不确定性；如今在<strong>人工智能</strong>中扮演核心角色。</p>
+      <p>理解熵，就是理解<strong>不确定性</strong>——而理解不确定性，正是理解智能的关键。</p>
+
+      <hr />
+
+      <h2>一、热力学熵：从蒸汽机到统计物理</h2>
+
+      <h3>1.1 熵的起源</h3>
+      <p>1865年，鲁道夫·克劳修斯提出"熵"（Entropie）概念：</p>
+      <blockquote>
+        <p>ΔS = ΔQ / T</p>
+      </blockquote>
+      <p>其中 ΔS 是熵变，ΔQ 是热量，T 是温度。熵增原理告诉我们：<strong>孤立系统的熵总是增加的</strong>——这就是著名的热力学第二定律。</p>
+
+      <h3>1.2 统计物理的解释</h3>
+      <p>1877年，路德维希·玻尔兹曼给出了熵的统计解释：</p>
+      <blockquote>
+        <p>S = k·ln(W)</p>
+      </blockquote>
+      <p>其中 W 是系统的微观状态数，k 是玻尔兹曼常数。熵本质上是<strong>系统状态数的对数</strong>——状态越多，熵越大。</p>
+
+      <p><strong>核心洞察</strong>：熵衡量的是"系统可能性的多少"。</p>
+
+      <hr />
+
+      <h2>二、信息熵：香农的革命</h2>
+
+      <h3>2.1 什么是信息？</h3>
+      <p>1948年，克劳德·香农在《通信的数学理论》中提出：<strong>信息的本质是不确定性</strong>。</p>
+      <p>一个消息的信息量 = <strong>消除的不确定性</strong></p>
+
+      <h3>2.2 香农熵的定义</h3>
+      <blockquote>
+        <p>H(X) = -Σ P(x) · log₂ P(x)</p>
+      </blockquote>
+      <p>其中 H(X) 是熵（单位：bit），P(x) 是事件 x 的概率。</p>
+
+      <h3>2.3 直观理解</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>情况</th>
+            <th>概率分布</th>
+            <th>熵</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>确定事件</td>
+            <td>P=1</td>
+            <td>0 bit</td>
+          </tr>
+          <tr>
+            <td>公平硬币</td>
+            <td>P=0.5, P=0.5</td>
+            <td>1 bit</td>
+          </tr>
+          <tr>
+            <td>公平骰子</td>
+            <td>P=1/6 每个面</td>
+            <td>≈2.58 bit</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <h2>三、最大熵原理：不确定性下的最优推断</h2>
+
+      <h3>3.1 核心思想</h3>
+      <p>当我们不知道真实分布时，<strong>最合理的猜测是熵最大的分布</strong>——因为它对所有可能性一视同仁，不做任何额外假设。</p>
+
+      <h3>3.2 应用场景</h3>
+      <ul>
+        <li><strong>自然语言处理</strong>：N-gram 模型使用最大熵原则</li>
+        <li><strong>统计物理</strong>：平衡态分布是最大熵分布</li>
+        <li><strong>机器学习</strong>：softmax 就是最大熵分类器</li>
+      </ul>
+
+      <hr />
+
+      <h2>四、密码学中的熵</h2>
+
+      <h3>4.1 加密的本质</h3>
+      <p><strong>加密 = 降低熵</strong></p>
+      <p>原始明文是有意义的信息（低熵），加密后的密文应该看起来完全随机（高熵）。如果密文有规律，说明加密有问题。</p>
+
+      <h3>4.2 密钥熵</h3>
+      <p>密钥的安全性取决于其熵：</p>
+      <ul>
+        <li><strong>n 位密钥</strong>：最大熵 n bit</li>
+        <li><strong>128 位密钥</strong>：2¹²⁸ 可能（天文数字）</li>
+      </ul>
+
+      <h3>4.3 随机数生成</h3>
+      <p>密码学依赖<strong>高质量随机数</strong>——真随机数有最大熵，伪随机数熵有限。</p>
+
+      <hr />
+
+      <h2>五、熵与 AI</h2>
+
+      <h3>5.1 交叉熵与损失函数</h3>
+      <p>机器学习中的<strong>交叉熵损失</strong>：</p>
+      <blockquote>
+        <p>H(P, Q) = -Σ P(x) · log Q(x)</p>
+      </blockquote>
+      <p>其中 P 是真实分布，Q 是预测分布。交叉熵衡量的是<strong>预测与真实的差异</strong>。</p>
+
+      <h3>5.2 注意力机制</h3>
+      <p>Transformer 的注意力可以理解为<strong>动态调整熵的分配</strong>——对重要token分配更多"注意力熵"。</p>
+
+      <h3>5.3 LLM 的生成</h3>
+      <p>GPT 等语言模型的本质是：<strong>预测下一个token的概率分布</strong>，然后从中采样。这个过程就是在控制熵——temperature 参数直接影响输出的熵。</p>
+
+      <hr />
+
+      <h2>六、量子熵：前沿探索</h2>
+
+      <h3>6.1 冯诺依曼熵</h3>
+      <blockquote>
+        <p>S = -Tr(ρ · log ρ)</p>
+      </blockquote>
+      <p>量子系统的熵由密度矩阵 ρ 决定。量子纠缠会导致<strong>熵的关联</strong>——这是量子计算的基础。</p>
+
+      <h3>6.2 量子密钥分发</h3>
+      <p>利用量子力学的不可克隆原理，可以实现<strong>理论安全</strong>的密钥分发——任何窃听都会被发现。</p>
+
+      <hr />
+
+      <h2>七、连接三个目标</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>目标</th>
+            <th>与熵的连接</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>自我演化</td>
+            <td>学习 = 降低认知熵，建立有序知识结构</td>
+          </tr>
+          <tr>
+            <td>密码学</td>
+            <td>加密 = 熵的操控，密钥 = 熵源</td>
+          </tr>
+          <tr>
+            <td>统计物理</td>
+            <td>熵的起源，相变与涌现的物理基础</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <h2>结语</h2>
+      <p>熵是一个连接<strong>物理、信息、AI、安全</strong>的核心概念。它提醒我们：</p>
+      <ul>
+        <li><strong>不确定性是本质</strong>——接受不确定性，而不是消灭它</li>
+        <li><strong>信息是熵的减少</strong>——学习就是降低认知熵</li>
+        <li><strong>智能是对熵的管理</strong>——AI 学会在不确定性中做出最好决策</li>
+      </ul>
+      <p>也许<strong>理解熵，就是理解智能的本质</strong>。</p>
+
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-header {
+    margin-bottom: 2rem;
+  }
+
+  .date {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  h1 {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .content {
+    line-height: 1.8;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--color-text-light);
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  td {
+    color: var(--color-text-light);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+</style>
